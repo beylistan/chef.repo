@@ -7,6 +7,10 @@
 # All rights reserved - Do Not Redistribute
 #
 
+chef_gem 'docker-api' do 
+  compile_time true
+end
+
 docker_service 'default' do
 	action [:create,:start]
 end
