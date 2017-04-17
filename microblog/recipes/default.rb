@@ -7,15 +7,23 @@
 # All rights reserved - Do Not Redistribute
 #
 
-chef_gem 'docker-api' do 
-  compile_time true
+package 'docker'
+
+service 'docker' do
+	action [:start, :enable]
 end
 
-docker_service 'default' do
-	action [:create,:start]
+template '/etc/systemd/system/microblog.service' do
+	source 'microblog.service'
+	mode '0644'
+	notify :run, 'execute[reloadsystemd]'
 end
 
-docker_image 'beylistan/microblog:latest' do
-	action :pull
+execute 'reloadsystemd' do
+  command '/usr/sbin/systemctl daemon-reload'
+  action :nothing
 end
 
+service 'microblog' do
+	action [:start, :enable]
+end
