@@ -20,7 +20,7 @@ template '/etc/systemd/system/microblog.service' do
 end
 
 execute 'reloadsystemd' do
-  command '/usr/sbin/systemctl daemon-reload'
+  command '/bin/systemctl daemon-reload'
   action :nothing
 end
 
