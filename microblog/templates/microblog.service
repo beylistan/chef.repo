@@ -2,7 +2,7 @@
 Description=Microblog Service
 
 [Service]
-ExecStart=docker run --rm -p 80:5000 beylistan/microblog:latest
+ExecStart=/bin/docker run --rm -p 80:5000 beylistan/microblog:latest
 
 [Install]
 WantedBy=multi-user.target
