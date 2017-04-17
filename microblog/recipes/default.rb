@@ -16,7 +16,7 @@ end
 template '/etc/systemd/system/microblog.service' do
 	source 'microblog.service'
 	mode '0644'
-	notify :run, 'execute[reloadsystemd]'
+	notifies :run, 'execute[reloadsystemd]'
 end
 
 execute 'reloadsystemd' do
