@@ -1,0 +1,8 @@
+[Unit]
+Description=Microblog Service
+
+[Service]
+ExecStart=docker run --rm beylistan/microblog:latest
+
+[Install]
+WantedBy=multi-user.target
