@@ -24,6 +24,11 @@ execute 'reloadsystemd' do
   action :nothing
 end
 
+exec "repull-docker-image" do
+  command "/bin/docker pull microblog:latest"
+  notifies :restart, 'service[microblog]'
+end
+
 service 'microblog' do
 	action [:start, :enable]
 end
