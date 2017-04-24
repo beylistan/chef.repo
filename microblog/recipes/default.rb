@@ -25,7 +25,7 @@ execute 'reloadsystemd' do
 end
 
 execute "repull-docker-image" do
-  command "/bin/docker pull microblog:latest"
+  command "/bin/docker pull beylistan/microblog:latest"
   notifies :restart, 'service[microblog]'
 end
 
